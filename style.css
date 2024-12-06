@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.social-links a {
+    margin: 0 10px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.latest-news, .research-work {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.latest-news h2, .research-work h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.latest-news ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.project {
+    margin-bottom: 20px;
+}
+
+.project h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.links a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+.profile-pic {
+    width: 20%; 
+    max-width: 150px;
+    height: auto; 
+    border-radius: 50%;
+    margin: 0 auto;
+}
