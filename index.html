@@ -38,14 +38,12 @@
                 <li>Interference-aware designs for Integrated Sensing and Communication (ISAC).</li>
             </ul>
         </section>
-        <section class="research-work">
-            <h2>Research Work</h2>
-            <div class="project">
-                <h3>Samsung R&D Institute Internship (Feb–Jul 2025)</h3>
-                <p>Developed battery-efficient Wi-Fi localization for smartphones and generalized 
-                    sensing approaches for multi-room environments, ensuring scalability 
-                    and robustness.</p>
-                <h2>LiteTrack: Power-Efficient Wi-Fi-Based Indoor Localization for Smartphones</h2>
+        <!-- New, detailed Publications section -->
+        <section class="publications">
+            <h2>Publications</h2>
+
+            <article class="pub-item">
+                <h3>LiteTrack: Power-Efficient Wi-Fi-Based Indoor Localization for Smartphones</h3>
                 <p><strong>IEEE ANTS 2025</strong> (Accepted for presentation)</p>
                 <p><em>Work carried out during internship at SRIB (Samsung R&D Institute India – Bangalore).</em></p>
                 <p>
@@ -61,51 +59,33 @@
                     <!-- Optional: add code or dataset links when ready -->
                     <!-- <a href="#">🧪 Code</a> -->
                 </div>
-            </div>
-            <div class="project">
-                <h3>Practical Defense Against Adversarial WiFi Sensing(IEEE ANTS 2024)</h3>
-                <p>Non-intrusive approach of WiFi-based sensing has expanded its 
-                    market presence. It leverages existing communication infrastructure, 
-                    extracting Channel State Information (CSI) for area assessment. 
-                    However, the method’s susceptibility to misuse, termed the 
-                    Integrated Sensing and Communication (ISAC) problem, 
-                    necessitates robust defenses. Our study introduces a 
-                    black-box defense against adversarial attacks on CSI, 
-                    reducing classification model accuracy from 98% to 17% 
-                    while maintain ing strong communication throughput. 
-                    Additionally, our method preserves a median Signal-to-Noise 
-                    Ratio (SNR) difference of 1dB for perturbed samples, 
-                    enhancing overall system reliability.</p>
+            </article>
+
+            <article class="pub-item">
+                <h3>Practical Defense Against Adversarial Wi-Fi Sensing</h3>
+                <p><strong>IEEE ANTS 2024</strong></p>
+                <p>
+                    We present a black-box perturbation defense for CSI-based sensing that significantly reduces adversarial
+                    classifier accuracy while maintaining communication quality (≈1&nbsp;dB median SNR delta). The approach
+                    targets realistic ISAC threats with minimal overhead and strong practicality.
+                </p>
                 <div class="links">
-                    <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10898521">📄 Paper</a>
+                    <a href="##">📄 Paper</a>
                 </div>
-            </div>
-            <div class="project">
-                <h3>Improving Network Resource Utilization for Distributed 
-                    Wireless Sensing Applications(AIoT@MobiHoc2024)</h3>
-                <p>Edge-assisted wireless sensing is increasingly popular, 
-                    where complex neural network models perform inference tasks 
-                    on wireless channel state information (CSI) data streamed 
-                    from IoT devices. However large volumes of CSI data sent 
-                    across the network for inference can significantly impact
-                     network bandwidth and reduce the Quality of Experience. 
-                     This work tackles the challenge of optimizing network 
-                     resource utilization in wireless sensing systems by compressing 
-                     and subsampling CSI streams. We evaluate methods that quantize and 
-                     selectively subsample CSI data before transmission to the edge server, 
-                     which is then fed to the inference models. Such approach reduces 
-                     bandwidth and computational load, improving data transmission 
-                     and processing efficiency. Experiments conducted in two real 
-                     testbeds (indoors as well as outdoors) show how CSI compression 
-                     preserves sensing information integrity while enhancing system 
-                     performance in terms of latency, energy efficiency, and throughput. 
-                     By integrating quantization and subsampling with edge computing, 
-                     this work enhances wireless sensing systems, making them more scalable 
-                     and efficient in utilizing network resources.</p>
+            </article>
+
+            <article class="pub-item">
+                <h3>Improving Network Resource Utilization for Distributed Wireless Sensing Applications</h3>
+                <p><strong>AIoT Workshop @ MobiHoc 2024</strong></p>
+                <p>
+                    We compress and selectively subsample CSI streams before edge inference to improve end-to-end efficiency.
+                    Results across two testbeds show better latency, energy use, and throughput with negligible impact on
+                    sensing accuracy.
+                </p>
                 <div class="links">
-                <a href="https://dl.acm.org/doi/10.1145/3641512.3690039">📄 Paper</a>
+                    <a href="https://dl.acm.org/doi/10.1145/3641512.3690039">📄 Paper</a>
                 </div>
-            </div>
+            </article>
         </section>
         <section class="contact">
             <h2>Contact Information</h2>
@@ -123,6 +103,7 @@
     </main>
 </body>
 </html>
+
 
 
 
