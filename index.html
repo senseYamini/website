@@ -6,50 +6,52 @@
     <title>Yamini Shankar</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="page">
 
-    <!-- Header: photo + basic info -->
-    <header class="header">
-        <div class="header-left">
-            <img src="myPic.jpeg" alt="Photo of Yamini Shankar" class="profile-pic">
+<div class="container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+        <img src="myPic.jpeg" class="profile-pic" alt="Yamini">
+
+        <h1 class="name">Yamini Shankar</h1>
+
+        <p class="affiliation">
+            PhD Scholar<br>
+            Department of Computer Science & Engineering<br>
+            IIT Madras, India
+        </p>
+
+        <p class="email">
+            <a href="mailto:cs22d002@cse.iitm.ac.in">cs22d002@cse.iitm.ac.in</a>
+        </p>
+
+        <div class="side-links">
+            <a href="https://www.linkedin.com/in/yamini-shankar-a6379b134/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/senseYamini" target="_blank">GitHub</a>
+            <a href="Resume.pdf" target="_blank">Resume</a>
         </div>
-        <div class="header-right">
-            <h1 class="name">Yamini Shankar</h1>
-            <p class="affiliation">
-                PhD Scholar, Department of Computer Science and Engineering<br>
-                Indian Institute of Technology Madras, Chennai, India
-            </p>
-            <p class="email">
-                Email:
-                <a href="mailto:cs22d002@cse.iitm.ac.in">cs22d002@cse.iitm.ac.in</a>
-            </p>
-            <p class="links">
-                <a href="https://www.linkedin.com/in/yamini-shankar-a6379b134/" target="_blank">LinkedIn</a> ·
-                <a href="https://github.com/senseYamini" target="_blank">GitHub</a> ·
-                <a href="Resume.pdf" target="_blank">Resume</a>
-            </p>
-        </div>
-    </header>
 
-    <!-- Simple nav bar -->
-    <nav class="nav">
-        <a href="#about">About</a>
-        <a href="#news">News</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
-    </nav>
+        <nav class="side-nav">
+            <a href="#about">About</a>
+            <a href="#news">News</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </aside>
 
-    <main>
+    <!-- RIGHT CONTENT -->
+    <main class="content">
+
         <!-- About -->
         <section id="about" class="section">
             <h2>About</h2>
             <p>
-                I am a PhD scholar in the Department of Computer Science and Engineering at
-                IIT Madras. My research interests span Wi-Fi sensing, indoor localization,
-                resource-efficient wireless systems, and the broader implications of sensing on
-                network performance, energy consumption, and privacy.
+                I am a PhD scholar at IIT Madras working on Wi-Fi sensing, indoor localization,
+                resource-efficient wireless systems, and the implications of sensing on network
+                performance, energy consumption, and privacy.
             </p>
         </section>
 
@@ -57,126 +59,81 @@
         <section id="news" class="section">
             <h2>News</h2>
             <ul>
-                <li>
-                    Our paper <em>Less is More: Improving WiFi Localization Accuracy with Fewer Scans</em>
-                    is accepted for presentation at <strong>COMSNETS 2026</strong>.
-                </li>
-                <li>
-                    Our paper <em>LiteTrack: Power-Efficient Wi-Fi-Based Indoor Localization for Smartphones</em>
-                    was accepted for presentation at <strong>IEEE ANTS 2025</strong>.
-                </li>
-                <li>
-                    Part of the
-                    <a href="https://news.samsung.com/in/forging-futures-how-samsungs-prepare-programme-is-pioneering-a-new-era-of-research-leadership" target="_blank">
-                        PrePARe 2025
-                    </a>
-                    program by Samsung Research India-Bangalore for six months with hands-on experience.
-                </li>
-                <li>Recently published in <strong>IEEE ANTS 2024</strong>.</li>
-                <li>Recently published in <strong>AIoT @ MobiHoc 2024</strong>.</li>
+                <li>Our paper <em>Less is More: Improving Wi-Fi Localization Accuracy with Fewer Scans</em> has been accepted at <strong>COMSNETS 2026</strong>.</li>
+                <li><em>LiteTrack: Power-Efficient Wi-Fi Localization</em> accepted at <strong>IEEE ANTS 2025</strong>.</li>
+                <li>Completed the <strong>PrePARe 2025</strong> program at Samsung Research India–Bangalore.</li>
+                <li>Published in <strong>IEEE ANTS 2024</strong>.</li>
+                <li>Published in <strong>AIoT @ MobiHoc 2024</strong>.</li>
             </ul>
         </section>
 
         <!-- Research -->
         <section id="research" class="section">
-            <h2>Ongoing Research</h2>
+            <h2>Research</h2>
             <ul>
                 <li>Implications of Wi-Fi sensing on device battery, network scalability, and privacy.</li>
-                <li>Adversarial Wi-Fi sensing and mitigation for IoT devices.</li>
-                <li>Interference-aware designs for Integrated Sensing and Communication (ISAC).</li>
+                <li>Adversarial sensing & defenses for IoT devices.</li>
+                <li>Interference-aware ISAC design.</li>
             </ul>
         </section>
 
         <!-- Publications -->
         <section id="publications" class="section">
             <h2>Publications</h2>
-            <article class="pub-item">
-                <h3>Less is More: Improving WiFi Localization Accuracy with Fewer Scans</h3>
-                <p><strong>COMSNETS 2026</strong> (Accepted for presentation)</p>
-                <p class="pub-text">
-                    Traditional WiFi-based indoor localization pipelines rely on dense and frequent scanning to
-                    achieve good accuracy. However, aggressive scanning drains device battery, increases channel 
-                    contention, and scales poorly as the number of users grows. In this work, we show that more 
-                    scans do not necessarily mean better localization. Through extensive experiments across 
-                    diverse indoor environments, we uncover a surprising insight: only a small subset of carefully 
-                    selected scans captures most of the localization signal strength. We systematically analyze the 
-                    relationship between scan count, spatial diversity, and localization error.
-                    We propose a lightweight scan-scheduling strategy that adapts scan frequency to environmental 
-                    dynamics and user motion, achieving high accuracy with minimal overhead.
-                </p>
-                <p class="pub-links">
-                    <a href="#">📄 Camera-ready (coming soon)</a>
-                </p>
-            </article>
 
-            <article class="pub-item">
+            <div class="pub">
+                <h3>Less is More: Improving Wi-Fi Localization Accuracy with Fewer Scans</h3>
+                <p><strong>COMSNETS 2026</strong> (Accepted)</p>
+                <p>
+                    We show that dense Wi-Fi scanning is unnecessary for accurate localization.  
+                    A small, carefully chosen set of scans provides most of the signal strength diversity while
+                    reducing battery drain and channel contention. We propose an adaptive scan-scheduling strategy
+                    that achieves high accuracy with minimal overhead.
+                </p>
+            </div>
+
+            <div class="pub">
                 <h3>LiteTrack: Power-Efficient Wi-Fi-Based Indoor Localization for Smartphones</h3>
-                <p><strong>IEEE ANTS 2025</strong> (Accepted for presentation)</p>
-                <p class="pub-text">
-                    Work carried out during internship at SRIB (Samsung R&amp;D Institute India – Bangalore).
-                    LiteTrack investigates how to make on-device, Wi-Fi-based indoor localization more power-efficient
-                    on smartphones. Through extensive experiments, we benchmark the minimum number of Wi-Fi scans
-                    required to achieve reliable localization while reducing battery consumption. We quantify the
-                    accuracy–energy trade-off across scan rates and propose a practical scanning policy that retains
-                    robust localization performance with significantly fewer scans—extending battery life without
-                    sacrificing user experience.
+                <p><strong>IEEE ANTS 2025</strong></p>
+                <p>
+                    Developed during my internship at Samsung R&D. LiteTrack identifies the optimal number of Wi-Fi scans
+                    needed for robust localization and proposes an energy-aware scanning policy that retains accuracy
+                    while reducing battery consumption.
                 </p>
-                <p class="pub-links">
-                    <a href="#">📄 Camera-ready (coming soon)</a>
-                </p>
-            </article>
+            </div>
 
-            <article class="pub-item">
+            <div class="pub">
                 <h3>Practical Defense Against Adversarial Wi-Fi Sensing</h3>
                 <p><strong>IEEE ANTS 2024</strong></p>
-                <p class="pub-text">
-                    We present a black-box perturbation defense for CSI-based sensing that significantly reduces
-                    adversarial classifier accuracy while maintaining communication quality (≈1&nbsp;dB median SNR
-                    delta). The approach targets realistic ISAC threats with minimal overhead and strong practicality.
+                <p>
+                    A black-box, low-overhead perturbation defense that preserves communication quality
+                    while significantly degrading adversarial sensing models.
                 </p>
-                <p class="pub-links">
-                    <a href="##">📄 Paper</a>
-                </p>
-            </article>
+            </div>
 
-            <article class="pub-item">
-                <h3>Improving Network Resource Utilization for Distributed Wireless Sensing Applications</h3>
-                <p><strong>AIoT Workshop @ MobiHoc 2024</strong></p>
-                <p class="pub-text">
-                    We compress and selectively subsample CSI streams before edge inference to improve
-                    end-to-end efficiency. Results across two testbeds show better latency, energy use, and
-                    throughput with negligible impact on sensing accuracy.
+            <div class="pub">
+                <h3>Improving Network Resource Utilization in Distributed Wireless Sensing</h3>
+                <p><strong>AIoT @ MobiHoc 2024</strong></p>
+                <p>
+                    We propose selective CSI subsampling and compression to improve end-to-end sensing throughput,
+                    latency, and energy efficiency across distributed nodes.
                 </p>
-                <p class="pub-links">
-                    <a href="https://dl.acm.org/doi/10.1145/3641512.3690039" target="_blank">📄 Paper</a>
-                </p>
-            </article>
+            </div>
         </section>
 
         <!-- Contact -->
         <section id="contact" class="section">
             <h2>Contact</h2>
             <p>
-                Email:
-                <a href="mailto:cs22d002@cse.iitm.ac.in">cs22d002@cse.iitm.ac.in</a>
-            </p>
-            <p>
-                Lab 423, SSB Block<br>
-                Department of Computer Science and Engineering<br>
-                IIT Madras, Chennai – 600036<br>
-                Tamil Nadu, India
+                Email: <a href="mailto:cs22d002@cse.iitm.ac.in">cs22d002@cse.iitm.ac.in</a><br>
+                Lab 423, SSB Block, CSE Dept., IIT Madras<br>
+                Chennai – 600036, India
             </p>
         </section>
+
     </main>
 
-    <footer class="footer">
-        &copy; <span id="year"></span> Yamini Shankar
-    </footer>
 </div>
 
-<script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-</script>
 </body>
 </html>
-
