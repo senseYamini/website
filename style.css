@@ -125,6 +125,12 @@ body {
     margin-bottom: 5px;
 }
 
+.availability-box strong {
+    font-size: 1.25em;   /* increase this value as needed */
+    display: block;
+    margin-bottom: 8px;
+}
+
 /* ------------------------------
    RESPONSIVE
 --------------------------------*/
@@ -144,3 +150,4 @@ body {
         padding: 25px;
     }
 }
+
