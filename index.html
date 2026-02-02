@@ -3,167 +3,941 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yamini Shankar</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Yamini Shankar - RF-Based Wireless Sensing Research</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #0ea5e9;
+            --accent-dark: #0284c7;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border: #334155;
+            --bg: #0f172a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #1a1f35 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 280px 1fr 300px;
+            grid-template-rows: auto auto 1fr;
+            gap: 32px;
+            padding: 48px 32px;
+            max-width: 1600px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        .header {
+            grid-column: 1 / -1;
+            grid-row: 1;
+            margin-bottom: 12px;
+            animation: slideDown 0.6s ease-out;
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .header-image {
+            flex-shrink: 0;
+            animation: slideIn 0.8s ease-out 0.2s both;
+        }
+
+        .header-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 32px rgba(14, 165, 233, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .header-image img:hover {
+            box-shadow: 0 12px 48px rgba(14, 165, 233, 0.25);
+            transform: scale(1.02);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 24px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .header-meta a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header-meta a:hover {
+            color: var(--accent-dark);
+        }
+
+        @media (max-width: 1024px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .header-image img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        /* DIVIDER */
+        .divider {
+            grid-column: 1 / -1;
+            grid-row: 2;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 0 0 8px 0;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            grid-column: 2;
+            grid-row: 3;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+        }
+
+        /* RESEARCH OVERVIEW */
+        .research-overview {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border);
+            padding: 28px;
+            border-radius: 8px;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* EDUCATION */
+        .education-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .edu-item {
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.4);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .edu-item:hover {
+            background: rgba(30, 41, 59, 0.7);
+            transform: translateX(4px);
+        }
+
+        .edu-item .year {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        .edu-item .degree {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .edu-item .institution {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ACHIEVEMENTS */
+        .achievements-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .achievement {
+            padding: 16px;
+            background: rgba(14, 165, 233, 0.08);
+            border-left: 2px solid var(--accent);
+            border-radius: 4px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* RESEARCH EXPERIENCE */
+        .experience-item {
+            padding: 24px;
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: var(--accent);
+        }
+
+        .experience-item .duration {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .experience-item .title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .experience-item .description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* PUBLICATIONS */
+        .publications-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .pub-item {
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.4);
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            transition: all 0.3s ease;
+        }
+
+        .pub-item:hover {
+            background: rgba(30, 41, 59, 0.7);
+            transform: translateX(4px);
+        }
+
+        .pub-label {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* PROJECTS SECTION */
+        .project-item {
+            padding: 24px;
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .project-item .title {
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-size: 1.05rem;
+        }
+
+        .project-item .description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* CONTACT SECTION */
+        .contact-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .contact-item {
+            padding: 24px;
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+
+        .contact-item .label {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item .value {
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-dark);
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            grid-column: 3;
+            grid-row: 3;
+            animation: slideIn 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .sidebar-box {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            position: sticky;
+            top: 48px;
+            max-height: calc(100vh - 96px);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .sidebar-box::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar-box::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .sidebar-box::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+
+        .sidebar-box::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        .sidebar-nav {
+            display: none;
+        }
+
+        /* LEFT NAVIGATION */
+        .left-nav {
+            grid-column: 1;
+            grid-row: 3;
+            animation: slideIn 0.8s ease-out 0.1s both;
+        }
+
+        .left-nav-box {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            position: sticky;
+            top: 48px;
+            height: fit-content;
+        }
+
+        .sidebar-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            background: rgba(14, 165, 233, 0.08);
+            border-left: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            user-select: none;
+        }
+
+        .nav-item:hover {
+            background: rgba(14, 165, 233, 0.15);
+            color: var(--accent);
+        }
+
+        .nav-item.active {
+            background: rgba(14, 165, 233, 0.2);
+            border-left-color: var(--accent);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* NEWS SECTION */
+        .news-section {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .news-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .news-scroll {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow-y: auto;
+            padding-right: 8px;
+            flex: 1;
+        }
+
+        .news-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .news-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .news-scroll::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+
+        .news-scroll::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        .news-item {
+            padding: 12px;
+            background: rgba(14, 165, 233, 0.08);
+            border-left: 2px solid var(--accent);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            transition: all 0.3s ease;
+        }
+
+        .news-item:hover {
+            background: rgba(14, 165, 233, 0.15);
+            transform: translateX(4px);
+        }
+
+        .news-date {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.75rem;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .news-text {
+            color: var(--text-secondary);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .header {
+                grid-column: 1;
+            }
+
+            .divider {
+                grid-column: 1;
+            }
+
+            .main-content {
+                grid-column: 1;
+            }
+
+            .left-nav {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .sidebar-box {
+                grid-column: 1;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .header-image img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 24px 16px;
+                gap: 16px;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .header-meta {
+                gap: 12px;
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.1rem;
+            }
+
+            .education-grid,
+            .achievements-grid,
+            .publications-list {
+                gap: 12px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-<div class="container">
-
-    <!-- LEFT SIDEBAR -->
-    <aside class="sidebar">
-        <img src="myPic.jpeg" class="profile-pic" alt="Yamini">
-
-        <h1 class="name">Yamini Shankar</h1>
-
-        <p class="affiliation">
-            PhD Scholar<br>
-            Department of Computer Science & Engineering<br>
-            IIT Madras, India
-        </p>
-
-        <p class="email">
-            <a href="mailto:cs22d002@cse.iitm.ac.in">cs22d002@cse.iitm.ac.in</a>
-        </p>
-
-        <div class="side-links">
-            <a href="https://www.linkedin.com/in/yamini-shankar-a6379b134/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/senseYamini" target="_blank">GitHub</a>
-            <a href="Resume.pdf" target="_blank">Resume</a>
+    <div class="container">
+        <!-- LEFT NAVIGATION -->
+        <div class="left-nav">
+            <div class="left-nav-box">
+                <div class="sidebar-title">Navigation</div>
+                <div class="nav-list">
+                    <div class="nav-item active" onclick="showPage(event, 'home')">Home</div>
+                    <div class="nav-item" onclick="showPage(event, 'research')">Research & Projects</div>
+                    <div class="nav-item" onclick="showPage(event, 'education')">Education</div>
+                    <div class="nav-item" onclick="showPage(event, 'awards')">Awards</div>
+                    <div class="nav-item" onclick="showPage(event, 'professional')">Professional</div>
+                    <div class="nav-item" onclick="showPage(event, 'contact')">Contact</div>
+                </div>
+            </div>
         </div>
 
-        <nav class="side-nav">
-            <a href="#about">About</a>
-            <a href="#news">News</a>
-            <a href="#research">Research</a>
-            <a href="#publications">Publications</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </aside>
-
-    <!-- RIGHT CONTENT -->
-    <main class="content">
-        <!-- Availability Notice -->
-        <div class="availability-box">
-            <h3 class="availability-title">Graduating Soon · Open to Opportunities</h3>
-            <p>
-                I am expected to graduate in July 2026 and am actively seeking research and industry
-                opportunities in wireless systems, RF/Wi-Fi sensing, and mobile systems.
-            </p>
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-content">
+                <h1>Yamini Shankar</h1>
+                <p class="subtitle">Ph.D. Scholar in RF-Based Wireless Sensing | IIT Madras</p>
+                <div class="header-meta">
+                    <span>📍 Chennai, Tamil Nadu</span>
+                    <span>✉️ cs22d002@cse.iitm.ac.in</span>
+                </div>
+            </div>
+            <div class="header-image">
+                <img src="myPic.jpeg" alt="Yamini Shankar">
+            </div>
         </div>
 
+        <div class="divider"></div>
 
-        <!-- About -->
-        <section id="about" class="section">
-            <h2>About</h2>
-            <p>
-                I am a PhD scholar at IIT Madras working on Wi-Fi sensing, indoor localization,
-                resource-efficient wireless systems, and the implications of sensing on network
-                performance, energy consumption, and privacy.
-            </p>
-        </section>
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- HOME PAGE (Landing) -->
+            <div class="page active" id="home">
+                <!-- RESEARCH OVERVIEW -->
+                <div class="section">
+                    <h2 class="section-title">Research Focus</h2>
+                    <div class="research-overview">
+                        Doctoral research on <strong>RF-based sensing</strong> with emphasis on <strong>Wi-Fi sensing</strong> spanning three core directions: 
+                        <br><br>
+                        <strong>(i) Power-efficient Wi-Fi localization</strong> for resource-constrained IoT devices, addressing battery consumption in background location services
+                        <br><br>
+                        <strong>(ii) Network-efficient Wi-Fi sensing</strong> for distributed systems, solving scalability bottlenecks in multi-sensor deployments
+                        <br><br>
+                        <strong>(iii) Adversarial Wi-Fi sensing and defenses</strong> against privacy attacks, protecting RF-based systems from eavesdropping and inference attacks
+                    </div>
+                </div>
 
-        <!-- News -->
-        <section id="news" class="section">
-            <h2>News</h2>
-            <ul>
-                <li>Awarded the <strong>Malathi Veeraraghavan Fellowship 2025</strong>: selected as an <strong>MV Scholar (2025)</strong>.</li>
-                <li>Our paper <em>Less is More: Improving Wi-Fi Localization Accuracy with Fewer Scans</em> has been accepted at <strong>COMSNETS 2026</strong>.</li>
-                <li><em>LiteTrack: Power-Efficient Wi-Fi Localization</em> accepted at <strong>IEEE ANTS 2025</strong>.</li>
-                <li>Completed the <strong>PrePARe 2025</strong> program at Samsung Research India–Bangalore.</li>
-            </ul>
-        </section>
-        
-        <!-- Awards & Achievements -->
-        <section id="awards" class="section">
-            <h2>Awards & Achievements</h2>
-            <ul>
-                <li>
-                    Awarded as <strong>Malathi Veeraraghavan (MV Fellowship) Scholar 2025</strong>.
-                </li>
-                <li>
-                    Selected for the <strong>Samsung PrePARe Research Leadership Program</strong>,
-                    a highly competitive national-level initiative aimed at grooming future research leaders.
-                </li>
-                <li>
-                    Awarded <strong>“Star TA”</strong> for exceptional teaching assistance in
-                    <strong>CS3205</strong> and <strong>CS2300</strong> at IIT Madras.
-                </li>
-            </ul>
-        </section>
-
-
-        <!-- Research -->
-        <section id="research" class="section">
-            <h2>Research</h2>
-            <ul>
-                <li>Implications of Wi-Fi sensing on device battery, network scalability, and privacy.</li>
-                <li>Adversarial sensing & defenses for IoT devices.</li>
-                <li>Interference-aware ISAC design.</li>
-            </ul>
-        </section>
-
-        <!-- Publications -->
-        <section id="publications" class="section">
-            <h2>Publications</h2>
-
-            <div class="pub">
-                <h3>Less is More: Improving Wi-Fi Localization Accuracy with Fewer Scans</h3>
-                <p><strong>COMSNETS 2026</strong> (Accepted)</p>
-                <p>
-                    We show that dense Wi-Fi scanning is unnecessary for accurate localization.  
-                    A small, carefully chosen set of scans provides most of the signal strength diversity while
-                    reducing battery drain and channel contention. We propose an adaptive scan-scheduling strategy
-                    that achieves high accuracy with minimal overhead.
-                </p>
+                <!-- PUBLICATIONS -->
+                <div class="section">
+                    <h2 class="section-title">Publications</h2>
+                    <div class="publications-list">
+                        <div class="pub-item">
+                            <div class="pub-label">Journal Under Submission</div>
+                            <strong>Power-Efficient Wi-Fi Localization</strong> – Extended research on LowFI and LiteTrack systems with comprehensive evaluation across diverse indoor environments.
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-label">Journal Under Minor Revision</div>
+                            <strong>AutoCompress: Improving Network Efficiency For Distributed Wireless Sensing Applications</strong> – Pervasive and Mobile Computing Journal (PMCJ)
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-label">Conference 2026</div>
+                            <strong>Less is More: Improving WiFi Localization Accuracy with Fewer Scans</strong> – COMSNETS 2026
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-label">Conference 2025</div>
+                            <strong>LiteTrack: Power-Efficient Wi-Fi-Based Indoor Localization for Smartphones</strong> – IEEE ANTS 2025
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-label">Conference 2024</div>
+                            <strong>Improving Network Resource Utilization for Distributed Wireless Sensing Applications</strong> – AIoT, ACM MobiHoc Workshops 2024
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-label">Conference 2024</div>
+                            <strong>Practical Defense Against Adversarial WiFi Sensing</strong> – IEEE ANTS 2024
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-label">Journal 2022</div>
+                            <strong>A survey on nature-inspired techniques for computation offloading and service placement in emerging edge technologies</strong> – World Wide Web, 2022
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-label">Conference Under Review</div>
+                            <strong>Unseen and Unheard: Minimal and Targeted Defense for Passive WiFi Inference</strong>
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-label">Journal Under Development</div>
+                            <strong>Additional research on adversarial Wi-Fi sensing</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="pub">
-                <h3>LiteTrack: Power-Efficient Wi-Fi-Based Indoor Localization for Smartphones</h3>
-                <p><strong>IEEE ANTS 2025</strong></p>
-                <p>
-                    Developed during my internship at Samsung R&D. LiteTrack identifies the optimal number of Wi-Fi scans
-                    needed for robust localization and proposes an energy-aware scanning policy that retains accuracy
-                    while reducing battery consumption.
-                </p>
+            <!-- RESEARCH & PROJECTS PAGE -->
+            <div class="page" id="research">
+                <!-- EXPERIENCE HIGHLIGHTS -->
+                <div class="section">
+                    <h2 class="section-title">Research Experience</h2>
+                    
+                    <div class="experience-item">
+                        <div class="duration">Feb – Jul 2025</div>
+                        <div class="title">Samsung Research Internship</div>
+                        <div class="description">
+                            Samsung Research Institute, Bangalore. Designed battery-oriented, coarse-grained Wi-Fi localization framework for smartphones. Generalized Wi-Fi sensing for multi-room setups addressing robustness and scalability challenges. <em>(2 papers: 1 published, 1 under review)</em>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="duration">Aug 2022 – Current</div>
+                        <div class="title">Ph.D. Research, IIT Madras</div>
+                        <div class="description">
+                            Focus on power-efficient Wi-Fi localization (published in IEEE ANTS and COMSNETS), network-efficient Wi-Fi sensing, and adversarial Wi-Fi sensing with defenses. Multiple publications in peer-reviewed conferences and journals.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="duration">Dec 2020 – Jun 2022</div>
+                        <div class="title">Master's Thesis, JNU</div>
+                        <div class="description">
+                            Developed optimization algorithms for computation offloading and service placement in Fog/Edge networks. <em>(1 journal publication)</em>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="duration">Jan – Jun 2020</div>
+                        <div class="title">Research Internship, MNNIT Allahabad</div>
+                        <div class="description">
+                            Hands-on expertise in network simulators and real systems.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KEY PROJECTS -->
+                <div class="section">
+                    <h2 class="section-title">Key Projects</h2>
+                    
+                    <div class="project-item">
+                        <div class="title">Power-Efficient Wi-Fi Sensing</div>
+                        <div class="description">
+                            Engineered two systems (LowFI and LiteTrack) for power-aware positioning using Sionna RT-based channel modeling and motion-triggered scanning. Achieved 10–22× battery savings over continuous scanning while maintaining >80% classification accuracy across 22 locations and 10+ devices.
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="title">Network-Efficient Wi-Fi Sensing</div>
+                        <div class="description">
+                            Developed two-stage framework combining lightweight occupancy detection and SSPOC-based compression. Achieved >4000× compression with 85% accuracy, 35.5% throughput improvement, and >90% latency reduction in distributed sensing systems.
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="title">Adversarial Wi-Fi Sensing & Defense</div>
+                        <div class="description">
+                            Formulated black-box defense as constrained optimization balancing SNR preservation with adversarial misclassification. Degraded adversarial localization accuracy from 98% to 17% while maintaining signal quality. First to address SNR-communication tradeoffs in ISAC security.
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="pub">
-                <h3>Practical Defense Against Adversarial Wi-Fi Sensing</h3>
-                <p><strong>IEEE ANTS 2024</strong></p>
-                <p>
-                    A black-box, low-overhead perturbation defense that preserves communication quality
-                    while significantly degrading adversarial sensing models.
-                </p>
+            <!-- EDUCATION PAGE -->
+            <div class="page" id="education">
+                <div class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="education-grid">
+                        <div class="edu-item">
+                            <div class="year">2022 – Present</div>
+                            <div class="degree">Ph.D. in Computer Science</div>
+                            <div class="institution">IIT Madras, Chennai, Tamil Nadu</div>
+                        </div>
+                        <div class="edu-item">
+                            <div class="year">2020 – 2022</div>
+                            <div class="degree">M.Tech. in Computer Science</div>
+                            <div class="institution">JNU, New Delhi</div>
+                        </div>
+                        <div class="edu-item">
+                            <div class="year">2017 – 2020</div>
+                            <div class="degree">MCA</div>
+                            <div class="institution">Central University of Haryana</div>
+                        </div>
+                        <div class="edu-item">
+                            <div class="year">2014 – 2017</div>
+                            <div class="degree">B.Sc. (Computer Science Hons.)</div>
+                            <div class="institution">St. Anthony's College, NEHU, Shillong</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Miscellaneous</h2>
+                    <div class="education-grid">
+                        <div class="edu-item">
+                            <div class="year">June 2024</div>
+                            <div class="degree">Summer School on Algorithmic Structures for Emerging Wireless Networks and Statistical Inference
+in Large Dimensional Spaces, conducted by Centre of Networked Intelligence(CNI)</div>
+                            <div class="institution">IISc, Bangalore, Karnataka</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="pub">
-                <h3>Improving Network Resource Utilization in Distributed Wireless Sensing</h3>
-                <p><strong>AIoT @ MobiHoc 2024</strong></p>
-                <p>
-                    We propose selective CSI subsampling and compression to improve end-to-end sensing throughput,
-                    latency, and energy efficiency across distributed nodes.
-                </p>
+            <!-- AWARDS PAGE -->
+            <div class="page" id="awards">
+                <div class="section">
+                    <h2 class="section-title">Awards & Achievements</h2>
+                    <div class="achievements-grid">
+                        <div class="achievement">✦ Malathi Veeraraghavan (MV Fellowship) Scholar 2025</div>
+                        <div class="achievement">✦ Travel grant for COMSNETS 2026</div>
+                        <div class="achievement">✦ Samsung PrePARe Research Leadership Program – national-level research leader initiative</div>
+                        <div class="achievement">✦ Star TA for CS3205 & CS2300 at IIT Madras</div>
+                        <div class="achievement">✦ IEEE ComSoc Travel Grant for IEEE ANTS 2024</div>
+                        <div class="achievement">✦ State Representative for UNDP National Youth Parliament (2 per state)</div>
+                        <div class="achievement">✦ Rank 2 in MCA, Central University of Haryana</div>
+                        <div class="achievement">✦ University Rank 4 in B.Sc. Computer Science (NEHU)</div>
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <!-- Contact -->
-        <section id="contact" class="section">
-            <h2>Contact</h2>
-            <p>
-                Email: <a href="mailto:cs22d002@cse.iitm.ac.in">cs22d002@cse.iitm.ac.in</a><br>
-                Lab 423, SSB Block, CSE Dept., IIT Madras<br>
-                Chennai – 600036, India
-            </p>
-        </section>
+            <!-- PROFESSIONAL CONTRIBUTION PAGE -->
+            <div class="page" id="professional">
+                <div class="section">
+                    <h2 class="section-title">Professional Contribution</h2>
+                    <div class="achievements-grid">
+                        <div class="achievement">📋 Reviewer: IEEE Wireless Communication Letters</div>
+                        <div class="achievement">👨‍🏫 Teaching Assistant: CS3205 (Introduction to Computer Networks), CS2300 (Foundations of Computer System Design), CS6120 (Wireless Communication and Networks) – IIT Madras</div>
+                        <div class="achievement">🤝 Volunteer: ICDCN 2024 at IIT Madras – handled guest registrations and managed ongoing events</div>
+                        <div class="achievement">📢 Organizer: CSE Bits monthly event in the Department of CSE, IIT Madras (2023)</div>
+                        <div class="achievement">🎓 Subject Matter Expert: GATE CS NPTEL (Operating Systems, Computer Networks) – 2022</div>
+                    </div>
+                </div>
+            </div>
 
-    </main>
+            <!-- CONTACT PAGE -->
+            <div class="page" id="contact">
+                <div class="section">
+                    <h2 class="section-title">Contact & Links</h2>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="label">Email</div>
+                            <div class="value"><a href="mailto:cs22d002@cse.iitm.ac.in">cs22d002@cse.iitm.ac.in</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="label">Location</div>
+                            <div class="value">Chennai, Tamil Nadu, India</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="label">Affiliation</div>
+                            <div class="value">Ph.D. Scholar, SENSE Lab<br>Department of Computer Science and Engineering<br>IIT Madras</div>
+                        </div>
+                    </div>
+                </div>
 
-</div>
+                <div class="section">
+                    <h2 class="section-title">Faculty References</h2>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="label">Ph.D. Supervisor</div>
+                            <div class="value">Dr. Ayon Chakraborty</div>
+                            <div class="value"><a href="mailto:ayon@cse.iitm.ac.in">ayon@cse.iitm.ac.in</a></div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="label">Faculty Reference</div>
+                            <div class="value">Dr. Mukulika Maity</div>
+                            <div class="value"><a href="mailto:mukulika@cse.iitm.ac.in">mukulika@cse.iitm.ac.in</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- RIGHT SIDEBAR - ACHIEVEMENTS -->
+        <div class="sidebar-box">
+            <!-- NEWS SECTION -->
+            <div class="news-section">
+                <div class="news-title">Latest Achievements</div>
+                <div class="news-scroll">
+                    <div class="news-item">
+                        <div class="news-date">Jan 2026</div>
+                        <div class="news-text">Our Work AutoCompress is accepted in Q1 journal Pervasive and Mobile Computing.</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">Dec 2025</div>
+                        <div class="news-text">Awarded MV Fellowship Scholar 2025</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">Dec 2025</div>
+                        <div class="news-text">Our Work LowFi is accepted in COMSNETS 2026</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">Feb 2025</div>
+                        <div class="news-text">Samsung internship completion – Papers published in IEEE ANTS 2025</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">Dec 2024</div>
+                        <div class="news-text">Selected for Samsung PrePARe Research Leadership Program</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(event, pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Remove active class from all nav items
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Add active class to clicked nav item
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
-
-
-
